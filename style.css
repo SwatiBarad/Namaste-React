@@ -10,6 +10,7 @@
 /* HEADER  */
 
 .navbar{
+    background-color: #fdd5e1;
     font-size: 20px;
     display: flex;
     justify-content: start;
@@ -20,8 +21,7 @@
 .navbar > .logo > img{
     height: 70px;
     text-align: center;
-    display: flex
-;
+    display: flex;
     justify-content: center;
     align-items: center;
 }
@@ -40,6 +40,10 @@
 .navbar > .nav-items > ul > li:hover{
     border-bottom: 2px solid palevioletred;
 }
+.navbar > .nav-items > ul > li >a{
+    color: darkred;
+    text-decoration: none;
+}
 .navbar > .last-nav-item{
     display: flex;
     cursor: pointer;
@@ -49,6 +53,7 @@
         gap: 12%;
         width: 30%;
         margin-right: 5%;
+        color: darkred;
 }
 .navbar > .last-nav-item > i{
     border-bottom: 2px solid palevioletred;
@@ -201,4 +206,145 @@
     height: 250px; 
     margin: 10px 10px;
     padding: 2%;
+}
+
+/* ERROR CONTAINER  */
+
+.error-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+}
+.error-container > img{
+    height: 80vh;
+}
+.take-me-home {
+    position: absolute;
+    top: 74%;
+    width: 200px;
+    height: 35px;
+    background: black;
+    border: 1px solid cyan;
+    border-radius: 7px;
+    box-shadow: 0 0 10px cyan;
+    cursor: pointer;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: white;
+    text-decoration: none;
+}
+
+/* RESTAURANTMENU CARD  */
+
+.resmenu-container{
+        display: flex;
+        flex-direction: column;
+        /* justify-content: center; */
+        align-items: center;
+        margin-top: 3%;
+        /* height: 100vh; */
+}
+.menudata-container{
+    background: linear-gradient(rgb(255, 255, 255) -6.71%, rgb(235, 235, 242) 56.19%, rgb(223, 223, 231) 106.56%);
+    padding: 0px 16px 16px;
+    width: 55%;
+    /* border-bottom-left-radius: 36px;
+    border-bottom-right-radius: 36px; */
+    /* border: 1px solid gray; */
+    border-radius: 36px;
+    box-shadow:  0px 8px 16px 0px rgba(0, 0, 0, 0.4);
+}
+.small-container{
+    display: flex;
+}
+.small-first {
+    width: 2vw;
+    /* height: 10vh; */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.small-first  > .dotOne , .dotTwo{
+    width: 8px;
+    height: 8px;
+    background-color: darkgrey;
+    border-radius: 50%;
+    padding: 5%;
+}
+.small-first  > .line{
+    width: 2px;
+    height: 20px;
+    background-color: darkgrey;
+}
+
+.cuisines > a{
+    color: orangered;
+    text-decoration: underline orangered;
+}
+.head{
+    display: flex;
+    width: 55%;
+    justify-content: space-between;
+    align-items: center;
+}
+.head > img {
+    width: 40px;
+    height: 35px;
+}
+
+/* 0ffer-contaienr  */
+
+.offer-contaienr{
+    margin-top: 3%;
+    width: 55%;
+}
+.offerData{
+    display: flex;
+    flex-wrap: wrap;
+}
+.mini-container{
+    margin: 0% 3% 1% 0;
+    border: 1px solid gray;
+    border-radius: 36px;
+    padding: 5px 35px;
+    width: 30%;
+    cursor: pointer;
+    line-height: 4px;
+    text-align: start;
+}
+.mini-container > p:nth-child(1){
+    font-weight: 800;
+    font-size: 18px;
+}
+.mini-container > p:nth-child(2){
+    color: gray;
+}
+/* recommended-container */
+.recommended-container{
+    padding: 0px 16px 16px;
+    border-radius: 36px;
+    box-shadow:  0px 8px 16px 0px rgba(0, 0, 0, 0.4);
+    width: 55%;
+    margin-top: 5%;
+}
+.data-container{
+    border-bottom: 1px solid gray;
+    display: flex;
+    justify-content: space-between;
+}
+.data-container >div > h2{
+    color: darkred;
+}
+.data-container>div > p:nth-child(3){
+    color: gray;
+}
+.data-container >img{
+    width: 150px;
+    margin: 2%;    
+    border-radius: 10px;
 }

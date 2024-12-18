@@ -27,6 +27,7 @@ const Body = () => {
 
     console.log("resdata", resList[0]?.info);
   };
+
   if (resList.length === 0) {
     return <Shimmer />;
   } else
