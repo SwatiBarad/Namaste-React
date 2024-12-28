@@ -122,7 +122,7 @@
     color: #ff6892;
     
 }
-.body> .top > .title::after{
+.body> .top::after{
     content: "";
  
  background: url("https://images.pexels.com/photos/262978/pexels-photo-262978.jpeg?cs=srgb&dl=pexels-pixabay-262978.jpg&fm=jpg");
@@ -155,21 +155,22 @@
     display: flex;
     margin-top: 2%;
     flex-wrap: wrap;
+    width: 100%;
     justify-content: center;
+    align-items: center;
 }
  .res-card{
     text-align: center;
     cursor: pointer;
     background-color: #fdd5e1;
     border-radius: 7px;
-    width: 18%;
+    width: 250px;
+    height: 350px;
     margin: 10px 10px;
     padding: 2%;
 }
  .res-card > img{
     width: 240px;
-    margin: 0;
-    padding: 0;
     height: 160px;
     border-radius: 7px;
 }
@@ -189,6 +190,9 @@
     /* color: darkgray; */
 }
 
+a {
+    text-decoration: none;
+}
 /* SHIMMER */
 
 .shimmer-container{
@@ -250,8 +254,8 @@
 }
 .menudata-container{
     background: linear-gradient(rgb(255, 255, 255) -6.71%, rgb(235, 235, 242) 56.19%, rgb(223, 223, 231) 106.56%);
-    padding: 0px 16px 16px;
-    width: 55%;
+    padding: 5px 16px 25px;
+    width: 70%;
     /* border-bottom-left-radius: 36px;
     border-bottom-right-radius: 36px; */
     /* border: 1px solid gray; */
@@ -288,7 +292,7 @@
 }
 .head{
     display: flex;
-    width: 55%;
+    width: 70%;
     justify-content: space-between;
     align-items: center;
 }
@@ -297,22 +301,43 @@
     height: 35px;
 }
 
+/* .changedImg{
+    filter: hue-rotate("245deg");
+} */
 /* 0ffer-contaienr  */
 
 .offer-contaienr{
     margin-top: 3%;
-    width: 55%;
+    display: flex;
+    flex-direction: column;
+    justify-self: center;
+    align-items: center;
+    overflow: hidden;
+    width: 70%;
+}
+.arrow{
+    margin: 0 2px;
+    border-radius: 7px;
+    border: 1px solid;
+    width: 3vw;
+    cursor: pointer;
+}
+.offer-head{
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
 }
 .offerData{
     display: flex;
     flex-wrap: wrap;
 }
 .mini-container{
-    margin: 0% 3% 1% 0;
+    margin: 0% 3% 1% 0%;
     border: 1px solid gray;
     border-radius: 36px;
     padding: 5px 35px;
-    width: 30%;
+    width: 200px;
     cursor: pointer;
     line-height: 4px;
     text-align: start;
@@ -325,15 +350,16 @@
     color: gray;
 }
 /* recommended-container */
-.recommended-container{
+.newlyLaunched-container{
     padding: 0px 16px 16px;
     border-radius: 36px;
-    box-shadow:  0px 8px 16px 0px rgba(0, 0, 0, 0.4);
-    width: 55%;
+   
+    width: 70%;
     margin-top: 5%;
 }
 .data-container{
     border-bottom: 1px solid gray;
+    
     display: flex;
     justify-content: space-between;
 }

@@ -4,16 +4,22 @@ import { Veg_img } from "../utils/constants";
 import { Link } from "react-router-dom";
 import Shimmer from "./Shimmer";
 import { recommended_img } from "../utils/constants";
+import { useParams } from "react-router-dom";
+import { Api_url } from "../utils/constants";
 
 const RestaurantMenu = () => {
   const [menu, setMenu] = useState(null);
+
   useEffect(() => {
     menuData();
   }, []);
 
+  const { resId } = useParams();
+  console.log("params", resId);
+
   const menuData = async () => {
     const data = await fetch(
-      "https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=11.8744775&lng=75.37036619999999&restaurantId=406932&catalog_qa=undefined&submitAction=ENTER"
+      Api_url + resId + "&catalog_qa=undefined&submitAction=ENTER"
     );
     const json = await data.json();
     console.log(json?.data?.cards[2]?.card?.card?.info);
@@ -32,6 +38,8 @@ const RestaurantMenu = () => {
     avgRating,
     areaName,
     id,
+    isveg,
+    type,
     veg,
   } = menu?.cards[2]?.card?.card?.info;
 
@@ -39,25 +47,33 @@ const RestaurantMenu = () => {
     menu?.cards[2]?.card?.card?.info?.sla;
 
   const { offers } = menu?.cards[3]?.card?.card?.gridElements?.infoWithStyle;
+
   const { itemCards } =
     menu?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards[2]?.card?.card;
-  console.log(itemCards);
-  const myFun = () => {
-    const img = document.querySelector(".vegimg");
-    if (veg === false) {
-      return (img.style.filter = "hue-rotate(245deg)");
-    }
-  };
+  console.log("item", itemCards);
+
+  // const myFun = () => {
+  //   {
+  //     if (veg === false || isveg !== 1) {
+  //       const img = document.getElementsByClassName("vegimg");
+  //       return (img.style.filter = "hue-rotate(245deg)");
+  //     }
+  //   }
+  // };
   return (
     <div className="resmenu-container">
       <div className="head">
         <h1>{name}</h1>
-        <img className="vegimg" onProgress={myFun()} src={Veg_img} />
+        <img className="vegimg  changedImg" src={Veg_img} />
       </div>
       <div className="menudata-container">
         <h3>
           ⭐{avgRating}
-          <span> ({totalRatings} ratings) </span>
+          <span>
+            {" "}
+            ({totalRatings > 1000 ? totalRatings / 1000 + "k" : totalRatings}
+            {" ratings"})
+          </span>
           <span> ▪ {costForTwoMessage}</span>
         </h3>
         <h3 className="cuisines">
@@ -78,11 +94,21 @@ const RestaurantMenu = () => {
         </div>
       </div>
       <div className="offer-contaienr">
-        <h1>Deal For You</h1>
+        <div className="offer-head">
+          <h1>Deal For You</h1>
+          {/* <div>
+            <button className="arrow left-arrow" onClick={() => {}}>
+              ⬅
+            </button>
+            <button className="arrow right-arrow" onClick={() => {}}>
+              ➡
+            </button>
+          </div> */}
+        </div>
         <div className="offerData">
           {offers.map((offer) => {
             return (
-              <div className="mini-container">
+              <div key={offers?.info?.restId} className="mini-container">
                 <p>{offer?.info?.header}</p>
                 <p>{offer?.info?.couponCode}</p>
               </div>
@@ -90,16 +116,31 @@ const RestaurantMenu = () => {
           })}
         </div>
       </div>
-      <div className="recommended-container">
+      {/* <button
+        onClick={() => {
+          const filterListdata = itemCards.filter((res) => {
+            return res?.card?.info?.isVeg === 1;
+          });
+
+          // console.log("set", filterListdata);
+        }}
+      >
+        veg
+      </button> */}
+      <div className="newlyLaunched-container">
         <h1>
-          Recommended<span> ({itemCards.length}) </span>
+          Newly Launched <span> ({itemCards.length}) </span>
         </h1>
         {itemCards.map((res) => {
           return (
             <div className="data-container">
-              <div>
+              <div key={res?.card?.info?.id}>
                 <h2>{res?.card?.info?.name}</h2>
-                <p>₹ {res?.card?.info?.price / 100}</p>
+                <p>
+                  ₹{" "}
+                  {res?.card?.info?.defaultPrice / 100 ||
+                    res?.card?.info?.price / 100}
+                </p>
                 <p>{res?.card?.info?.description}</p>
               </div>
               <img src={recommended_img + res?.card?.info?.imageId} />
