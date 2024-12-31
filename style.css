@@ -374,3 +374,57 @@ a {
     margin: 2%;    
     border-radius: 10px;
 }
+
+/* //about-container */
+
+.about-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center ;
+    padding: 2%;
+    font-size: 1.6rem;
+   font-weight: 900;
+   margin: 0;
+   
+}
+.about-container > p {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: darkgray;
+    margin: 0;
+    letter-spacing: 1.7px;
+    text-align: center;
+}
+.image-container{
+    margin-top: 5%;
+    display: flex;
+    flex-wrap: wrap;
+}
+.image-container > img{
+    width: 200px;
+
+}
+.user-contaier{
+    margin-top: 5%;
+    display: flex;
+    color: white;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: 900;
+    background-color: #02060C;
+}
+.user-contaier > img{
+    height: 300px;
+}
+.data-user {
+    margin-left: 1rem;
+}
+.data-user > p {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: darkgray;
+    margin: 0;
+    letter-spacing: 1.7px;
+    text-align: center;
+}
