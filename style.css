@@ -428,3 +428,12 @@ a {
     letter-spacing: 1.7px;
     text-align: center;
 }
+
+.user-info{
+    border: 1px solid;
+    width: 250px;
+    /* height: 400px; */
+    margin: 10px 5px;
+    text-align: center;
+    
+}

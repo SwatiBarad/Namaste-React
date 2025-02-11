@@ -38,7 +38,7 @@ const RestaurantMenu = () => {
     avgRating,
     areaName,
     id,
-    isveg,
+    isVeg,
     type,
     veg,
   } = menu?.cards[2]?.card?.card?.info;
@@ -52,19 +52,18 @@ const RestaurantMenu = () => {
     menu?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards[2]?.card?.card;
   console.log("item", itemCards);
 
-  // const myFun = () => {
-  //   {
-  //     if (veg === false || isveg !== 1) {
-  //       const img = document.getElementsByClassName("vegimg");
-  //       return (img.style.filter = "hue-rotate(245deg)");
-  //     }
-  //   }
-  // };
+  const myFun = () => {
+    if (isVeg === 0) {
+      const img = document.querySelector(".vegimg");
+      return (img.style.filter = "hue-rotate(245deg)");
+    }
+  };
+  myFun();
   return (
     <div className="resmenu-container">
       <div className="head">
         <h1>{name}</h1>
-        <img className="vegimg  changedImg" src={Veg_img} />
+        <img className="vegimg" src={Veg_img} />
       </div>
       <div className="menudata-container">
         <h3>
