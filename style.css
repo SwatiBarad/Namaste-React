@@ -400,6 +400,7 @@ a {
     margin-top: 5%;
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
 }
 .image-container > img{
     width: 200px;
@@ -436,4 +437,67 @@ a {
     margin: 10px 5px;
     text-align: center;
     
+}
+
+/* GAME */
+
+.dot{
+    background-color: red;
+    border: #8b0000;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+/*contact-container*/
+
+.contact-heading{
+    text-align: center;
+    font-size: 8vh;
+    background-color: white;
+    padding: 1%;
+}
+.contact-container{
+    display: flex;
+    height: 75vh;
+    background-color: white;
+    align-items: center;
+}
+.contact-container > img{
+    height: 70vh;
+}
+.contact-form{
+    width: 50%;
+    padding: 5%;
+    margin: 0 3%;
+    display: flex;
+    flex-direction: column;
+}
+
+.contact-form >label{
+    margin: 5px 0;
+    font-size: 18px;
+    color: #4f0202;
+}
+.contact-form > input{
+    width: 70%;
+    border-radius: 10px ;
+    border: none;
+    background-color:#fdd5e1;
+    color: gray;
+    height: 4.9vh;
+}
+.contact-form > .messageinput{
+    height: 10vh;
+}
+.contact-btn{
+    width: 70%;
+        height: 7.5vh;
+        margin-top: 3%;
+        font-size: 18px;
+    border-radius: 10px;
+    border: none;    
+    cursor: pointer;
+    background-color: #ff6892;
+    color: white;
 }

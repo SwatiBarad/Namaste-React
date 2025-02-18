@@ -2,11 +2,14 @@ import { useEffect, useState } from "react";
 import Rescard from "./Rescard";
 import Shimmer from "./Shimmer";
 import { Link, Links } from "react-router-dom";
+import useOnlineStatus from "../utils/useOnlineStatus";
+import Offline from "../components/Offline";
 
 const Body = () => {
   const [resList, setResList] = useState([]);
   const [searchText, setSearchText] = useState("");
   const [filterList, setFilterList] = useState([]);
+  const onlineStatus = useOnlineStatus();
 
   useEffect(() => {
     fetchData();
@@ -29,63 +32,64 @@ const Body = () => {
 
     console.log("resdata", resList[0]?.info);
   };
-
-  if (resList.length === 0) {
-    return <Shimmer />;
-  } else
-    return (
-      <div className="body">
-        <div className="top">
-          <div className="title">
-            Discover<span> restaurants </span>that deliver near you.
-          </div>
-          <div className="search">
-            <input
-              type="text"
-              placeholder="Search Here"
-              value={searchText}
-              onChange={(e) => {
-                setSearchText(e.target.value);
-              }}
-            />
-            <button
-              className="search-btn"
-              onClick={() => {
-                const searchFilterList = resList.filter((restaurant) => {
-                  return restaurant?.info?.name
-                    .toLowerCase()
-                    .includes(searchText.toLowerCase());
-                });
-                setFilterList(searchFilterList);
-              }}
-            >
-              <i className="fa-solid fa-magnifying-glass"></i>
-            </button>
-          </div>
+  if (onlineStatus === false) {
+    return <Offline />;
+  }
+  return resList.length === 0 ? (
+    <Shimmer />
+  ) : (
+    <div className="body">
+      <div className="top">
+        <div className="title">
+          Discover<span> restaurants </span>that deliver near you.
         </div>
-        <button
-          className="res-btn"
-          onClick={() => {
-            const topresFilterList = resList.filter((restaurant) => {
-              return restaurant?.info?.avgRating > 4.4;
-            });
-            setFilterList(topresFilterList);
-          }}
-        >
-          Top Rated Restaurants
-        </button>
-        <div className="res-container">
-          {filterList &&
-            filterList.map &&
-            filterList.map((restaurant) => {
-              return (
-                <Link to={"/restaurants/" + restaurant?.info?.id}>
-                  <Rescard key={restaurant?.info?.id} resData={restaurant} />
-                </Link>
-              );
-            })}
+        <div className="search">
+          <input
+            type="text"
+            placeholder="Search Here"
+            value={searchText}
+            onChange={(e) => {
+              setSearchText(e.target.value);
+            }}
+          />
+          <button
+            className="search-btn"
+            onClick={() => {
+              const searchFilterList = resList.filter((restaurant) => {
+                return restaurant?.info?.name
+                  .toLowerCase()
+                  .includes(searchText.toLowerCase());
+              });
+              setFilterList(searchFilterList);
+            }}
+          >
+            <i className="fa-solid fa-magnifying-glass"></i>
+          </button>
         </div>
       </div>
-    );
+      <button
+        className="res-btn"
+        onClick={() => {
+          const topresFilterList = resList.filter((restaurant) => {
+            return restaurant?.info?.avgRating > 4.4;
+          });
+          setFilterList(topresFilterList);
+        }}
+      >
+        Top Rated Restaurants
+      </button>
+      <div className="res-container">
+        {filterList &&
+          filterList.map &&
+          filterList.map((restaurant) => {
+            return (
+              <Link to={"/restaurants/" + restaurant?.info?.id}>
+                <Rescard key={restaurant?.info?.id} resData={restaurant} />
+              </Link>
+            );
+          })}
+      </div>
+    </div>
+  );
 };
 export default Body;

@@ -5,27 +5,13 @@ import { Link } from "react-router-dom";
 import Shimmer from "./Shimmer";
 import { recommended_img } from "../utils/constants";
 import { useParams } from "react-router-dom";
-import { Api_url } from "../utils/constants";
+import useRestaurantMenu from "../utils/useRestaurantMenu";
 
 const RestaurantMenu = () => {
-  const [menu, setMenu] = useState(null);
-
-  useEffect(() => {
-    menuData();
-  }, []);
-
   const { resId } = useParams();
-  console.log("params", resId);
 
-  const menuData = async () => {
-    const data = await fetch(
-      Api_url + resId + "&catalog_qa=undefined&submitAction=ENTER"
-    );
-    const json = await data.json();
-    console.log(json?.data?.cards[2]?.card?.card?.info);
-    setMenu(json?.data);
-    console.log("menu", menu);
-  };
+  const menu = useRestaurantMenu(resId);
+
   if (menu === null) {
     return <Shimmer />;
   }
@@ -59,6 +45,7 @@ const RestaurantMenu = () => {
     }
   };
   myFun();
+
   return (
     <div className="resmenu-container">
       <div className="head">
