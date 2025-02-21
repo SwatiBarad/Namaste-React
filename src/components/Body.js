@@ -39,12 +39,14 @@ const Body = () => {
     <Shimmer />
   ) : (
     <div className="body">
-      <div className="top">
-        <div className="title">
-          Discover<span> restaurants </span>that deliver near you.
+      <div className="flex justify-between h-56  items-center bg-[url(https://i.pinimg.com/736x/47/05/6b/47056b2d61778a7338be317f4782623c.jpg)] bg-center bg-no-repeat bg-cover ">
+        <div className="text-[3.5vw]/14 line-he text-white w-[50%] px-32">
+          Discover <span className="text-yellow-500"> restaurants </span>that
+          deliver near you.
         </div>
-        <div className="search">
+        <div className="mr-52 text-white">
           <input
+            className="border-2 w-80 border-gray-500 rounded-xl  h-8 p-2.5"
             type="text"
             placeholder="Search Here"
             value={searchText}
@@ -53,7 +55,7 @@ const Body = () => {
             }}
           />
           <button
-            className="search-btn"
+            className="w-14  h-8  border-2 rounded-xl border-gray-500"
             onClick={() => {
               const searchFilterList = resList.filter((restaurant) => {
                 return restaurant?.info?.name
@@ -65,20 +67,21 @@ const Body = () => {
           >
             <i className="fa-solid fa-magnifying-glass"></i>
           </button>
+          <button
+            className="border-2 w-56 mt-5  border-gray-500 rounded-xl bg-green-600  h-12 p-2.5"
+            onClick={() => {
+              const topresFilterList = resList.filter((restaurant) => {
+                return restaurant?.info?.avgRating > 4.4;
+              });
+              setFilterList(topresFilterList);
+            }}
+          >
+            Top Rated Restaurants
+          </button>
         </div>
       </div>
-      <button
-        className="res-btn"
-        onClick={() => {
-          const topresFilterList = resList.filter((restaurant) => {
-            return restaurant?.info?.avgRating > 4.4;
-          });
-          setFilterList(topresFilterList);
-        }}
-      >
-        Top Rated Restaurants
-      </button>
-      <div className="res-container">
+
+      <div className="flex flex-wrap ">
         {filterList &&
           filterList.map &&
           filterList.map((restaurant) => {

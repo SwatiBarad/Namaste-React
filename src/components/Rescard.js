@@ -9,9 +9,12 @@ const Rescard = (props) => {
   const { deliveryTime } = resData?.info?.sla;
 
   return (
-    <div className="res-card">
-      <img src={Res_img + cloudinaryImageId} />
-      <h2>{name}</h2>
+    <div className="w-3xs h-86 border-1 rounded-xl border-green-200 text-center p-1 mx-1.5 my-2.5 text-wrap bg-green-100">
+      <img
+        className="h-46 w-50 m-auto rounded-xl "
+        src={Res_img + cloudinaryImageId}
+      />
+      <h2 className="font-bold">{name}</h2>
       <h2>
         ⭐{avgRating}
         <span>-{deliveryTime} Mins</span>
