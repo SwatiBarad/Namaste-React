@@ -31,16 +31,21 @@ class Userclass extends React.Component {
     };
     return (
       <div>
-        <div className="user-contaier">
-          <div className="data-user">
-            <h1>Get the App now!</h1>
-            <p>For best offers and discounts curated specially for you.</p>
+        <div className="flex justify-between bg-black text-white">
+          <div className="m-auto w-[50%]">
+            <h1 className="font-bold text-4xl p-7">Get the App now!</h1>
+            <p className="text-2xl p-7">
+              For best offers and discounts curated specially for you.
+            </p>
           </div>
-          <img src="https://www.swiggy.com/corporate/wp-content/uploads/2024/10/app-now-pic-2.webp" />
+          <img
+            className="w-[50%]"
+            src="https://www.swiggy.com/corporate/wp-content/uploads/2024/10/app-now-pic-2.webp"
+          />
         </div>
-        <div className="user-info">
-          <img style={imgStyle} src={this.state.img} />
-          <h4>{this.state.name}</h4>
+        <div className="border-2 w-56 h-72 m-2 text-center">
+          <img className="m-auto" style={imgStyle} src={this.state.img} />
+          <h4 className="text-2xl ">{this.state.name}</h4>
           <h5>{this.state.id}</h5>
           <h2>{this.state.hobby}</h2>
         </div>

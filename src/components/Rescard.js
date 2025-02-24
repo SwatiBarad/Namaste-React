@@ -26,4 +26,19 @@ const Rescard = (props) => {
   );
 };
 
+/**HIGHER ORDER COPONENTS (which takes a rescard and return open Restaurant rescard) */
+
+export const withOpenLabel = (Rescard) => {
+  return (props) => {
+    return (
+      <div>
+        <label className="absolute ml-2 bg-green-800 text-white px-4 py-0.5 rounded-2xl ">
+          open
+        </label>
+        <Rescard {...props} />
+      </div>
+    );
+  };
+};
+
 export default Rescard;

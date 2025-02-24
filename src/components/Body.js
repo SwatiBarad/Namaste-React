@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import Rescard from "./Rescard";
+import Rescard, { withOpenLabel } from "./Rescard";
 import Shimmer from "./Shimmer";
 import { Link, Links } from "react-router-dom";
 import useOnlineStatus from "../utils/useOnlineStatus";
@@ -10,6 +10,8 @@ const Body = () => {
   const [searchText, setSearchText] = useState("");
   const [filterList, setFilterList] = useState([]);
   const onlineStatus = useOnlineStatus();
+
+  const OpenRescard = withOpenLabel(Rescard);
 
   useEffect(() => {
     fetchData();
@@ -30,7 +32,7 @@ const Body = () => {
       json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants
     );
 
-    console.log("resdata", resList[0]?.info);
+    console.log("resdata", resList);
   };
   if (onlineStatus === false) {
     return <Offline />;
@@ -68,7 +70,7 @@ const Body = () => {
             <i className="fa-solid fa-magnifying-glass"></i>
           </button>
           <button
-            className="border-2 w-56 mt-5  border-gray-500 rounded-xl bg-green-600  h-12 p-2.5"
+            className="border-2 w-56 mt-5  border-gray-500 rounded-xl bg-transparent  h-12 p-2.5"
             onClick={() => {
               const topresFilterList = resList.filter((restaurant) => {
                 return restaurant?.info?.avgRating > 4.4;
@@ -87,7 +89,14 @@ const Body = () => {
           filterList.map((restaurant) => {
             return (
               <Link to={"/restaurants/" + restaurant?.info?.id}>
-                <Rescard key={restaurant?.info?.id} resData={restaurant} />
+                {restaurant?.info?.availability?.opened ? (
+                  <OpenRescard
+                    key={restaurant?.info?.id}
+                    resData={restaurant}
+                  />
+                ) : (
+                  <Rescard key={restaurant?.info?.id} resData={restaurant} />
+                )}
               </Link>
             );
           })}
