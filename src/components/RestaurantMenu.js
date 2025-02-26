@@ -6,6 +6,7 @@ import Shimmer from "./Shimmer";
 import { recommended_img } from "../utils/constants";
 import { useParams } from "react-router-dom";
 import useRestaurantMenu from "../utils/useRestaurantMenu";
+import ResCategory from "./ResCategory";
 
 const RestaurantMenu = () => {
   const { resId } = useParams();
@@ -23,117 +24,41 @@ const RestaurantMenu = () => {
     totalRatings,
     avgRating,
     areaName,
-    id,
-    isVeg,
-    type,
-    veg,
   } = menu?.cards[2]?.card?.card?.info;
 
-  const { minDeliveryTime, maxDeliveryTime } =
-    menu?.cards[2]?.card?.card?.info?.sla;
+  const { slaString } = menu?.cards[2]?.card?.card?.info?.sla;
 
-  const { offers } = menu?.cards[3]?.card?.card?.gridElements?.infoWithStyle;
-
-  const { itemCards } =
-    menu?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards[2]?.card?.card;
-  console.log("item", itemCards);
-
-  const myFun = () => {
-    if (isVeg === 0) {
-      const img = document.querySelector(".vegimg");
-      return (img.style.filter = "hue-rotate(245deg)");
-    }
-  };
-  myFun();
+  const categories =
+    menu?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards.filter(
+      (c) =>
+        c?.card?.card?.["@type"] ===
+        "type.googleapis.com/swiggy.presentation.food.v2.ItemCategory"
+    );
+  console.log(categories);
 
   return (
-    <div className="resmenu-container">
-      <div className="head">
-        <h1>{name}</h1>
-        <img className="vegimg" src={Veg_img} />
-      </div>
-      <div className="menudata-container">
-        <h3>
-          ⭐{avgRating}
-          <span>
+    <div>
+      <div className="text-start my-6 w-8/12 m-auto">
+        <h1 className="font-bold text-3xl">{name}</h1>
+        <div className="border rounded-3xl border-gray-300 shadow-xl  my-10 px-8 py-4">
+          <div className=" font-bold text-lg">
             {" "}
-            ({totalRatings > 1000 ? totalRatings / 1000 + "k" : totalRatings}
-            {" ratings"})
-          </span>
-          <span> ▪ {costForTwoMessage}</span>
-        </h3>
-        <h3 className="cuisines">
-          <Link to={"/"}>{cuisines.join(", ")}</Link>
-        </h3>
-        <div className="small-container">
-          <div className="small-first">
-            <div className="dotOne"></div>
-            <div className="line"></div>
-            <div className="dotTwo"></div>
+            <span>
+              ⭐{avgRating}({totalRatings / 1000}k+ ratings)
+            </span>
+            <span> ▪{costForTwoMessage}</span>
           </div>
-          <div className="small-second">
-            <h3>{areaName}</h3>
-            <h3>
-              {minDeliveryTime}-{maxDeliveryTime} Mins
-            </h3>
-          </div>
+          <p className="text-lg text-green-800 font-bold">
+            {cuisines.join(", ")}
+          </p>
+          <p> {areaName}</p>
+          <p>{slaString.toLowerCase()}</p>
         </div>
       </div>
-      <div className="offer-contaienr">
-        <div className="offer-head">
-          <h1>Deal For You</h1>
-          {/* <div>
-            <button className="arrow left-arrow" onClick={() => {}}>
-              ⬅
-            </button>
-            <button className="arrow right-arrow" onClick={() => {}}>
-              ➡
-            </button>
-          </div> */}
-        </div>
-        <div className="offerData">
-          {offers.map((offer) => {
-            return (
-              <div key={offers?.info?.restId} className="mini-container">
-                <p>{offer?.info?.header}</p>
-                <p>{offer?.info?.couponCode}</p>
-              </div>
-            );
-          })}
-        </div>
-      </div>
-      {/* <button
-        onClick={() => {
-          const filterListdata = itemCards.filter((res) => {
-            return res?.card?.info?.isVeg === 1;
-          });
-
-          // console.log("set", filterListdata);
-        }}
-      >
-        veg
-      </button> */}
-      <div className="newlyLaunched-container">
-        <h1>
-          Newly Launched <span> ({itemCards.length}) </span>
-        </h1>
-        {itemCards.map((res) => {
-          return (
-            <div className="data-container">
-              <div key={res?.card?.info?.id}>
-                <h2>{res?.card?.info?.name}</h2>
-                <p>
-                  ₹{" "}
-                  {res?.card?.info?.defaultPrice / 100 ||
-                    res?.card?.info?.price / 100}
-                </p>
-                <p>{res?.card?.info?.description}</p>
-              </div>
-              <img src={recommended_img + res?.card?.info?.imageId} />
-            </div>
-          );
-        })}
-      </div>
+      {/* category accordions*/}
+      {categories.map((category) => (
+        <ResCategory data={category} key={category?.card?.card?.title} />
+      ))}
     </div>
   );
 };

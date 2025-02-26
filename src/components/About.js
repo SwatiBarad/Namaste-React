@@ -8,7 +8,7 @@ const About = () => {
         ABOUT US
       </h1>
       <p className="flex justify-center text-xl">
-        Swiggy is a new-age consumer-first organization offering an easy-to-use
+        Our app is a new-age consumer-first organization offering an easy-to-use
         convenience platform, accessible through a unified app.
       </p>
       <div className="flex flex-wrap">
