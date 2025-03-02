@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { useEffect } from "react";
 import { GitHub_url } from "../utils/constants";
+import UserContext from "../utils/UserContext";
 
 class Userclass extends React.Component {
   constructor() {
@@ -48,6 +49,9 @@ class Userclass extends React.Component {
           <h4 className="text-2xl ">{this.state.name}</h4>
           <h5>{this.state.id}</h5>
           <h2>{this.state.hobby}</h2>
+          <UserContext.Consumer>
+            {({ loggedInUser }) => <h2>User:{loggedInUser}</h2>}
+          </UserContext.Consumer>
         </div>
       </div>
     );

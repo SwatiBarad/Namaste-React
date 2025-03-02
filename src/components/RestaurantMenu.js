@@ -12,7 +12,7 @@ const RestaurantMenu = () => {
   const { resId } = useParams();
 
   const menu = useRestaurantMenu(resId);
-
+  const [showIndex, setShowIndex] = useState(null);
   if (menu === null) {
     return <Shimmer />;
   }
@@ -56,8 +56,13 @@ const RestaurantMenu = () => {
         </div>
       </div>
       {/* category accordions*/}
-      {categories.map((category) => (
-        <ResCategory data={category} key={category?.card?.card?.title} />
+      {categories.map((category, index) => (
+        <ResCategory
+          data={category?.card?.card}
+          key={category?.card?.card?.title}
+          showItems={index === showIndex ? true : false}
+          setShowIndex={() => setShowIndex(index)}
+        />
       ))}
     </div>
   );

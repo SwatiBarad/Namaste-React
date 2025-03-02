@@ -1,9 +1,10 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import Rescard, { withOpenLabel } from "./Rescard";
 import Shimmer from "./Shimmer";
 import { Link, Links } from "react-router-dom";
 import useOnlineStatus from "../utils/useOnlineStatus";
 import Offline from "../components/Offline";
+import UserContext from "../utils/UserContext";
 
 const Body = () => {
   const [resList, setResList] = useState([]);
@@ -12,6 +13,7 @@ const Body = () => {
   const onlineStatus = useOnlineStatus();
 
   const OpenRescard = withOpenLabel(Rescard);
+  const { loggedInUser, setUserName } = useContext(UserContext);
 
   useEffect(() => {
     fetchData();
@@ -80,6 +82,14 @@ const Body = () => {
           >
             Top Rated Restaurants
           </button>
+          <input
+            className="w-10vw border-2 ml-2 py-0.5 px-1.5 rounded-2xl"
+            value={loggedInUser}
+            onChange={(e) => {
+              e.target.value;
+              setUserName(e.target.value);
+            }}
+          />
         </div>
       </div>
 

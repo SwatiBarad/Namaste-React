@@ -22,10 +22,18 @@ const ItemList = (items) => {
             </h2>
             <p className="font-bold">
               <span className="text-green-800">
-                ⭐{item?.card?.info?.ratings?.aggregatedRating?.rating}{" "}
+                ⭐
+                {item?.card?.info?.ratings?.aggregatedRating?.rating >= "0"
+                  ? item?.card?.info?.ratings?.aggregatedRating?.rating
+                  : "No Ratings"}
               </span>
               <span>
-                ({item?.card?.info?.ratings?.aggregatedRating?.ratingCountV2})
+                (
+                {item?.card?.info?.ratings?.aggregatedRating?.ratingCountV2 >=
+                "0"
+                  ? item?.card?.info?.ratings?.aggregatedRating?.ratingCountV2
+                  : "0"}
+                )
               </span>
             </p>
             <p>₹ {item?.card?.info?.price / 100}</p>

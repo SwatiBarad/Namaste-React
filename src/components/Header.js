@@ -1,13 +1,11 @@
 import { Link } from "react-router-dom";
 import { Logo_url } from "../utils/constants";
 import useOnlineStatus from "../utils/useOnlineStatus";
-
-import { useState } from "react";
+import { useContext, useState } from "react";
 
 const Header = () => {
   const [loginBtn, setLogInBtn] = useState("Log-In");
   const onlineStatus = useOnlineStatus();
-
   return (
     <div className="w-[100%] font-sans flex justify-between  bg-green-500 shadow-xl rounded-b-3xl ">
       <div className="m-0 p-0s">
@@ -31,6 +29,7 @@ const Header = () => {
           <li className="px-5 font-bold">
             <Link to={"/contact"}>Contact Us</Link>
           </li>
+
           <li className="px-5 font-bold">
             <i className="fa-solid fa-cart-shopping"></i>
           </li>
