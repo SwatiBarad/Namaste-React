@@ -98,16 +98,18 @@ const Body = () => {
           filterList.map &&
           filterList.map((restaurant) => {
             return (
-              <Link to={"/restaurants/" + restaurant?.info?.id}>
-                {restaurant?.info?.availability?.opened ? (
-                  <OpenRescard
-                    key={restaurant?.info?.id}
-                    resData={restaurant}
-                  />
-                ) : (
-                  <Rescard key={restaurant?.info?.id} resData={restaurant} />
-                )}
-              </Link>
+              <div key={restaurant?.info?.id}>
+                <Link to={"/restaurants/" + restaurant?.info?.id}>
+                  {restaurant?.info?.availability?.opened ? (
+                    <OpenRescard
+                      key={restaurant?.info?.id}
+                      resData={restaurant}
+                    />
+                  ) : (
+                    <Rescard key={restaurant?.info?.id} resData={restaurant} />
+                  )}
+                </Link>
+              </div>
             );
           })}
       </div>

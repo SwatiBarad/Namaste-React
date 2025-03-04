@@ -12,6 +12,9 @@ import {
   data,
 } from "react-router-dom";
 import UserContext from "./src/utils/UserContext";
+import { Provider } from "react-redux";
+import appStore from "./src/redux/appStore";
+import Cart from "./src/components/Cart";
 
 /* LAZY LOADING (CHUNKING)(DYNAMIC IMPORT)(ON DEMAND IMPORT)*/
 const Contact = lazy(() => import("./src/components/Contact"));
@@ -27,12 +30,14 @@ const AppLayout = () => {
     setUserName(data.name);
   }, []);
   return (
-    <UserContext.Provider value={{ loggedInUser: userName, setUserName }}>
-      <div className="app">
-        <Header />
-        <Outlet />
-      </div>
-    </UserContext.Provider>
+    <Provider store={appStore}>
+      <UserContext.Provider value={{ loggedInUser: userName, setUserName }}>
+        <div className="app">
+          <Header />
+          <Outlet />
+        </div>
+      </UserContext.Provider>
+    </Provider>
   );
 };
 
@@ -57,6 +62,10 @@ const appRouter = createBrowserRouter([
             <Contact />
           </suspense>
         ),
+      },
+      {
+        path: "/cart",
+        element: <Cart />,
       },
       {
         path: `/restaurants/:resId`,

@@ -21,3 +21,15 @@ Footer
 - Links
 - Address
 - Contact  -->
+
+REDUX :-
+(to write data)when we hit the ADD+ button, then dispatch action then call a reducer function and that can be modify or update the slice of redux store.
+(to read data)component is subscribed to redux store via SELECTOR so component will updated automaticaly
+
+- install @redux/toolkit and react-redux
+- build our store
+- connect store to our app
+- slice(cartslice)
+- dispatch(action)
+- selector
+-

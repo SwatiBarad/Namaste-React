@@ -1,6 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 import { Res_img } from "../utils/constants";
 import UserContext from "../utils/UserContext";
+
 const Rescard = (props) => {
   const { resData } = props;
   const { name, avgRating, areaName, costForTwo, cuisines, cloudinaryImageId } =
