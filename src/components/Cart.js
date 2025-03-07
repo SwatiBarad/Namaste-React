@@ -20,6 +20,22 @@ const Cart = () => {
       </h1>
       <WithoutBtnItemList items={cartItems} />
       <div className="text-center">
+        {cartItems.length === 0 && (
+          <h1 className="text-xl my-4 font-bold ">
+            Your Cart Is Empty <br /> Please Add Some Items
+          </h1>
+        )}
+        {cartItems.length >= 2 && (
+          <h1 className="text-xl my-4 font-bold">
+            Total Amout : &nbsp; ₹
+            {cartItems
+              .reduce((total, item) => {
+                return (total += item?.card.info.price / 100);
+              }, 0)
+              .toFixed(2)}
+          </h1>
+        )}
+
         <button
           onClick={handleClearCart}
           className=" bg-green-600 text-white border-2 rounded-2xl w-56 text-xl h-12 cursor-pointer"

@@ -39,9 +39,9 @@ const Header = () => {
             <Link to={"/cart"}>
               <i className="fa-solid fa-cart-shopping cursor-pointer"></i>
 
-              <li className="absolute top-[-50%] right-[15%] bg-red-600 text-white h-5 flex justify-center items-center w-5 rounded-2xl">
+              <p className="absolute top-[-50%] right-[15%] bg-red-600 text-white h-5 flex justify-center items-center w-5 rounded-2xl">
                 {cartItems.length}
-              </li>
+              </p>
             </Link>
           </li>
           <button

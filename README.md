@@ -22,7 +22,7 @@ Footer
 - Address
 - Contact  -->
 
-REDUX :-
+<!--  REDUX :-
 (to write data)when we hit the ADD+ button, then dispatch action then call a reducer function and that can be modify or update the slice of redux store.
 (to read data)component is subscribed to redux store via SELECTOR so component will updated automaticaly
 
@@ -31,5 +31,23 @@ REDUX :-
 - connect store to our app
 - slice(cartslice)
 - dispatch(action)
-- selector
--
+- selector  -->
+
+<!-- TYPE OF TESTING(DEVLOPER) :-
+
+- unit testing
+-integration testing
+-end to end testing (e2e testing) -->
+
+<!-- TESTING OUR APPLICATION :-
+
+- install react testing library
+- install jest
+- install babel dependencies
+- config the babel
+- Configure Parcel Config file to disable default babel transpilation
+- jest configration (npx jest --init)
+- install jsdom library (jest 28) -->
+<!-- - Install @babel/preset-react - to make JSX work in test cases
+- Include @babel/preset-react inside my babel config
+- npm i -D @testing-library/jest-dom -->
