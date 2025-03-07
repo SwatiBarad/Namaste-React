@@ -27,3 +27,16 @@ test("input is there", () => {
 
   expect(inputName).toBeInTheDocument();
 });
+
+test("inputBoxes by length test", () => {
+  render(<Contact />);
+
+  //Quering
+  const inputBoxes = screen.getAllByRole("textbox");
+
+  //console.log(inputBoxes.length);
+
+  // Assertion
+
+  expect(inputBoxes.length).toBe(3);
+});

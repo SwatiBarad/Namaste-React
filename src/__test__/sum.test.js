@@ -1,3 +1,4 @@
+import { render } from "@testing-library/react";
 import sum from "../components/sum";
 
 test("sum of both arguments", () => {
