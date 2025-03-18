@@ -1,0 +1,91 @@
+{
+    "info": {
+        "id": "246173",
+        "name": "Cabane Bambou",
+        "cloudinaryImageId": "wxvdffu6tswhch3yetnm",
+        "locality": "Pamban Madhavan Road",
+        "areaName": "Talap",
+        "costForTwo": "₹400 for two",
+        "cuisines": [
+            "Chinese",
+            "Ice Cream",
+            "Biryani"
+        ],
+        "avgRating": 4.2,
+        "parentId": "52045",
+        "avgRatingString": "4.2",
+        "totalRatingsString": "8.0K+",
+        "sla": {
+            "deliveryTime": 37,
+            "lastMileTravel": 2.4,
+            "serviceability": "SERVICEABLE",
+            "slaString": "35-40 mins",
+            "lastMileTravelString": "2.4 km",
+            "iconType": "ICON_TYPE_EMPTY"
+        },
+        "availability": {
+            "nextCloseTime": "2025-03-17 23:00:00",
+            "opened": true
+        },
+        "badges": {
+            "imageBadges": [
+                {
+                    "imageId": "Rxawards/_CATEGORY-Chinese.png",
+                    "description": "Delivery!"
+                },
+                {
+                    "imageId": "Rxawards/_CATEGORY-Pan-Asian.png",
+                    "description": "Delivery!"
+                }
+            ]
+        },
+        "isOpen": true,
+        "aggregatedDiscountInfoV2": {},
+        "type": "F",
+        "badgesV2": {
+            "entityBadges": {
+                "imageBased": {
+                    "badgeObject": [
+                        {
+                            "attributes": {
+                                "description": "Delivery!",
+                                "imageId": "Rxawards/_CATEGORY-Chinese.png"
+                            }
+                        },
+                        {
+                            "attributes": {
+                                "description": "Delivery!",
+                                "imageId": "Rxawards/_CATEGORY-Pan-Asian.png"
+                            }
+                        }
+                    ]
+                },
+                "textBased": {},
+                "textExtendedBadges": {}
+            }
+        },
+        "differentiatedUi": {
+            "displayType": "ADS_UI_DISPLAY_TYPE_ENUM_DEFAULT",
+            "differentiatedUiMediaDetails": {
+                "lottie": {},
+                "video": {}
+            }
+        },
+        "reviewsSummary": {},
+        "displayType": "RESTAURANT_DISPLAY_TYPE_DEFAULT",
+        "restaurantOfferPresentationInfo": {},
+        "externalRatings": {
+            "aggregatedRating": {
+                "rating": "--"
+            }
+        },
+        "ratingsDisplayPreference": "RATINGS_DISPLAY_PREFERENCE_SHOW_SWIGGY"
+    },
+    "analytics": {
+        "context": "seo-data-5b0f6c24-5178-42ec-bcb7-b4064cd7d550"
+    },
+    "cta": {
+        "link": "https://www.swiggy.com/city/kannur/cabane-bambou-pamban-madhavan-road-talap-rest246173",
+        "type": "WEBLINK"
+    }
+}
