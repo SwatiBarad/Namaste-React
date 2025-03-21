@@ -15,7 +15,7 @@ class Userclass extends React.Component {
 
   render() {
     const GitHubData = async () => {
-      const data = await fetch("https://api.github.com/users/SwatiBarad");
+      const data = await fetch({ GitHub_url });
       const json = await data.json();
       console.log(json);
       this.setState({

@@ -16,4 +16,4 @@ export const recommended_img =
 export const Api_url =
   "https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=11.8744775&lng=75.37036619999999&restaurantId=";
 
-export const GitHub_url = "https://github.com/SwatiBarad";
+export const GitHub_url = "https://github.com/akshyamarch7";
