@@ -6,7 +6,7 @@ const Rescard = (props) => {
   const { resData } = props;
   const { name, avgRating, areaName, costForTwo, cuisines, cloudinaryImageId } =
     resData?.info;
-  console.log(resData);
+  // console.log(resData);
 
   const data = useContext(UserContext);
   const { deliveryTime } = resData?.info?.sla;

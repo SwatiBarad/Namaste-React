@@ -1,69 +1,89 @@
-// import { fireEvent, render, screen } from "@testing-library/react";
-// import { Provider } from "react-redux";
-// import appStore from "../redux/appStore";
-// import Header from "../components/Header";
-// import { BrowserRouter } from "react-router-dom";
-// import "@testing-library/jest-dom";
+import { fireEvent, render, screen } from "@testing-library/react";
+import { Provider } from "react-redux";
+import appStore from "../redux/appStore";
+import Header from "../components/Header";
+import { BrowserRouter } from "react-router-dom";
+import "@testing-library/jest-dom";
 
-// it("should remder login button", () => {
-//   render(
-//     <BrowserRouter>
-//       <Provider store={appStore}>
-//         <Header />
-//       </Provider>
-//     </BrowserRouter>
-//   );
-//   //Quring
+// wrap all test case in describe
 
-//   const loginBtn = screen.getByRole("button");
-//   //Assertion
+describe("Testing Header Component", () => {
+  // beforeAll(() => {
+  //   console.log("Before All");
+  // });
 
-//   expect(loginBtn).toBeInTheDocument();
-// });
+  // beforeEach(() => {
+  //   console.log("Before Each");
+  // });
 
-// it("should render Header Component with a Cart Items 0", () => {
-//   render(
-//     <BrowserRouter>
-//       <Provider store={appStore}>
-//         <Header />
-//       </Provider>
-//     </BrowserRouter>
-//   );
+  // afterAll(() => {
+  //   console.log("After All");
+  // });
 
-//   const cartItems = screen.getByRole("paragraph");
+  // afterEach(() => {
+  //   console.log("After Each");
+  // });
 
-//   expect(cartItems).toBeInTheDocument();
-// });
+  it("should remder login button", () => {
+    render(
+      <BrowserRouter>
+        <Provider store={appStore}>
+          <Header />
+        </Provider>
+      </BrowserRouter>
+    );
+    //Quring
 
-// it("should render cart with items", () => {
-//   render(
-//     <BrowserRouter>
-//       <Provider store={appStore}>
-//         <Header />
-//       </Provider>
-//     </BrowserRouter>
-//   );
-//   const cartItems = screen.getByRole("i");
+    const loginBtn = screen.getByRole("button");
+    //Assertion
 
-//   expect(cartItems).toBeInTheDocument();
-// });
+    expect(loginBtn).toBeInTheDocument();
+  });
 
-// it("should rchange log-in button to log-out on click", () => {
-//   render(
-//     <BrowserRouter>
-//       <Provider store={appStore}>
-//         <Header />
-//       </Provider>
-//     </BrowserRouter>
-//   );
-//   //Quring
+  it("should render Header Component with a Cart Items 0", () => {
+    render(
+      <BrowserRouter>
+        <Provider store={appStore}>
+          <Header />
+        </Provider>
+      </BrowserRouter>
+    );
 
-//   const loginBtn = screen.getByRole("button", { name: "Log-In" });
+    const cartItems = screen.getByRole("paragraph");
 
-//   fireEvent.click(loginBtn);
+    expect(cartItems).toBeInTheDocument();
+  });
 
-//   const logoutBtn = screen.getByRole("button", { name: "Log-Out" });
-//   //Assertion
+  it("should render cart with items", () => {
+    render(
+      <BrowserRouter>
+        <Provider store={appStore}>
+          <Header />
+        </Provider>
+      </BrowserRouter>
+    );
+    const cartItems = screen.getByTestId("cart");
 
-//   expect(logoutBtn).toBeInTheDocument();
-// });
+    expect(cartItems).toBeInTheDocument();
+  });
+
+  it("should rchange log-in button to log-out on click", () => {
+    render(
+      <BrowserRouter>
+        <Provider store={appStore}>
+          <Header />
+        </Provider>
+      </BrowserRouter>
+    );
+    //Quring
+
+    const loginBtn = screen.getByRole("button", { name: "Log-In" });
+
+    fireEvent.click(loginBtn);
+
+    const logoutBtn = screen.getByRole("button", { name: "Log-Out" });
+    //Assertion
+
+    expect(logoutBtn).toBeInTheDocument();
+  });
+});

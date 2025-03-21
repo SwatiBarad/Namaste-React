@@ -18,8 +18,9 @@ const ItemList = (items) => {
         <div
           key={item?.card?.info?.id}
           className="flex items-center my-4 p-4  border-b border-gray-300"
+          data-testid="itemDiv"
         >
-          <div className="w-10/12 ">
+          <div className="w-10/12 " data-testid="itemDiv">
             <img
               className="w-6 mb-2"
               src={

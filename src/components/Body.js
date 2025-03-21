@@ -26,7 +26,7 @@ const Body = () => {
 
     const json = await data.json();
 
-    console.log(json);
+    // console.log("json", json);
     setResList(
       json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants
     );
@@ -34,7 +34,7 @@ const Body = () => {
       json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants
     );
 
-    console.log("resdata", resList);
+    // console.log("resdata", resList);
   };
   if (onlineStatus === false) {
     return <Offline />;
@@ -60,6 +60,7 @@ const Body = () => {
           />
           <button
             className="w-14  h-8  border-2 rounded-xl border-gray-500"
+            data-testid="searchBtn"
             onClick={() => {
               const searchFilterList = resList.filter((restaurant) => {
                 return restaurant?.info?.name
@@ -98,7 +99,7 @@ const Body = () => {
           filterList.map &&
           filterList.map((restaurant) => {
             return (
-              <div key={restaurant?.info?.id}>
+              <div key={restaurant?.info?.id} data-testid="resDiv">
                 <Link to={"/restaurants/" + restaurant?.info?.id}>
                   {restaurant?.info?.availability?.opened ? (
                     <OpenRescard

@@ -37,9 +37,15 @@ const Header = () => {
 
           <li className="px-5 font-bold relative">
             <Link to={"/cart"}>
-              <i className="fa-solid fa-cart-shopping cursor-pointer"></i>
+              <i
+                className="fa-solid fa-cart-shopping cursor-pointer"
+                data-testid="cart"
+              ></i>
 
-              <p className="absolute top-[-50%] right-[15%] bg-red-600 text-white h-5 flex justify-center items-center w-5 rounded-2xl">
+              <p
+                className="absolute top-[-50%] right-[15%] bg-red-600 text-white h-5 flex justify-center items-center w-5 rounded-2xl"
+                data-testid="cartNum"
+              >
                 {cartItems.length}
               </p>
             </Link>
